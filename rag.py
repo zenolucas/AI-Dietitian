@@ -12,7 +12,7 @@ Settings.embed_model = HuggingFaceEmbedding(model_name="BAAI/bge-small-en-v1.5")
 # Settings.embed_model = HuggingFaceEmbedding(model_name="thenlper/gte-large") # alternative model
 
 Settings.llm = None
-Settings.chunk_size = 256
+Settings.chunk_size = 200
 Settings.chunk_overlap = 25
 
 # Read and Store Docs into Vector DB
@@ -22,7 +22,7 @@ documents = SimpleDirectoryReader("./Documents").load_data()
 index = VectorStoreIndex.from_documents(documents)
 
 # set number of docs to retreive
-top_k = 3
+top_k = 1
 
 # configure retriever
 retriever = VectorIndexRetriever(
@@ -48,13 +48,11 @@ for i in range(top_k):
 
 # onto prompting our LLM
 def generate_prompt_with_context(context, query):
-    prompt_template_w_context = f"""[INST]AI-Dietitian, functioning as a virtual Dietitian consultant, communicates in clear, accessible language, escalating to technical depth upon request. \
-    It reacts to feedback aptly and ends responses with its signature '–AI-Dietitian'. \
-    AI-Dietitian will tailor the length of its responses to match the viewer's comment, providing concise acknowledgments to brief expressions of gratitude or feedback, \
-    thus keeping the interaction natural and engaging.
+    prompt_template_w_context = f"""[INST]You are an AI-Dietitian.\
+    Your diabetic patients asks you questions about diabetes. You end responses with the signature '– AI-Dietitian'. \
 
     {context}
-    Please respond to the following comment. Use the context above if it is helpful.
+    Please respond to the following comment briefly. Use the context above if it is helpful.
 
     {query}
     [/INST]
@@ -63,6 +61,3 @@ def generate_prompt_with_context(context, query):
 
 prompt = generate_prompt_with_context(context, query)
 print(prompt)
-
-# Pass the prompt as an argument to the shell script
-subprocess.run(['tinyllama.sh', prompt], check=True)
