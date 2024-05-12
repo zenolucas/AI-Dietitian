@@ -1,12 +1,12 @@
 package handler
 
 import (
-	"AI-Dietitian/types"
 	"AI-Dietitian/view/chat"
+	"bytes"
 	"encoding/json"
 	"fmt"
+	"io"
 	"net/http"
-	"os"
 	"os/exec"
 	"strings"
 )
@@ -16,93 +16,88 @@ func HandleChatIndex(w http.ResponseWriter, r *http.Request) error {
 }
 
 func HandleChatCreate(w http.ResponseWriter, r *http.Request) error {
-	params := chat.ChatParams{
-		Prompt: r.FormValue("prompt"),
-	}
-	errors := chat.ChatErrors{}
-	prompt := params.Prompt
+	prompt := r.FormValue("prompt")
 
-	// below is where we implement, for what .sh to execute.
 	if strings.Contains(prompt, "recommend") && strings.Contains(prompt, "meal") {
-		// then we assume it's a meal recommendation task, lol
+		// then let's assume it's a recommendation task lol
 
-		// to be change into llama-2-7b-instruction.sh
-		cmd := exec.Command("llama-2-7b-chat.sh", prompt)
-		output, err := cmd.Output()
-		if err != nil {
-			fmt.Println("Error executing script:", err)
-			return err
-		}
-		fmt.Print(string(output))
-
-		// let's now extract response from LLM
-		text, err := os.ReadFile("./output_recommend.txt")
-		if err != nil {
-			fmt.Print(err)
-		}
-
-		// index of opening and closing brackets of JSON response from LLM
-		index1 := strings.LastIndex(string(text), "{")
-		index2 := strings.LastIndex(string(text), "}")
-
-		extracted := text[index1 : index2+1]
-
-		fmt.Print(string(extracted))
-
-		var meal types.Meal
-		// unmarshaling JSON
-		errs := json.Unmarshal([]byte(extracted), &meal)
-		if errs != nil {
-			fmt.Println(errs)
-		}
-
-		// Print extracted information
-		fmt.Println("Meal Name:", meal.MealName)
-		fmt.Println("Image File Path:", meal.ImageFilePath)
-		fmt.Println("Ingredients:", meal.Ingredients)
-		fmt.Println("Procedure:", meal.Procedure)
-		fmt.Println("Friendly Comments:", meal.FriendlyComments)
-
-		rec_params := chat.ChatParams{
-			Prompt:   r.FormValue("prompt"),
-			MealName: meal.MealName,
-			FileName: meal.ImageFilePath,
-		}
-
-		return render(r, w, chat.ChatForm(rec_params, errors))
+		print("recommend a meal using RAG as well, lols.")
 
 	} else {
-		// else let's just get the answer from SLM (Smol Language Model)
-		cmd := exec.Command("RAG.sh", prompt)
-		output, err := cmd.Output()
+		// else this is a QandA task, do RAG first then feed raggedPrompt into model
+
+		cmd := exec.Command("python", "rag.py", prompt)
+		var out bytes.Buffer
+		cmd.Stdout = &out
+
+		err := cmd.Run()
 		if err != nil {
-			fmt.Println("Error executing script:", err)
+			fmt.Println("Error executing command:", err)
 			return err
 		}
-		fmt.Print(string(output))
 
-		// let's now extract response from LLM
-		text, err := os.ReadFile("./output_chat.txt")
+		// Extract the output from the buffer
+		raggedPrompt := out.String()
+
+		// some preprocessing, removal of irrelevant CMD output from running rag.py
+		raggedPrompt = strings.ReplaceAll(raggedPrompt, "LLM is explicitly disabled. Using MockLLM.", "")
+		print(raggedPrompt)
+		
+
+		// Replace newline characters with spaces so that raggedPrompt is 1 single line.
+		raggedPrompt = strings.ReplaceAll(raggedPrompt, "\n", " ")
+
+		// to send a request to ollama hosted locally
+		url := "http://localhost:11434/api/generate"
+		headers := `{"Content-Type": "application/json"}`
+		payload := []byte(`{
+						"model": "phi3",
+						"prompt": "` + raggedPrompt + `",
+						"stream": false 
+						}`)
+
+		response, err := http.Post(url, headers, bytes.NewBuffer(payload))
 		if err != nil {
-			fmt.Print(err)
+			fmt.Println("something went wrong:", err)
+			http.Error(w, "Error sending request to Ollama", http.StatusInternalServerError)
+			return err
+		}
+		defer response.Body.Close()
+
+		if response.StatusCode != http.StatusOK {
+			fmt.Println("ERROR code: ", response.StatusCode)
+			return nil // Or return an error if you want to handle it differently
 		}
 
-		// trim response to only output the LLM prompt
-		// Find the index where "[/INST]" starts
-		startIndex := strings.Index(string(text), "[/INST]")
+		// Read the response body
+		body, err := io.ReadAll(response.Body)
+		if err != nil {
+			return err
+		}
 
-		if startIndex != -1 {
-			text = text[startIndex:]
-		} else {
-			fmt.Println("Substring '[/INST]' not found")
+		type OllamaResponse struct {
+			Response string `json:"response"`
+			// Add more fields if needed
+		}
+
+		var ollamaResp OllamaResponse
+		if err := json.Unmarshal(body, &ollamaResp); err != nil {
+			return err
 		}
 
 		chat_params := chat.ChatParams{
-			Prompt: r.FormValue("prompt"),
-			Answer: string(text),
+			Answer: ollamaResp.Response,
+		}
+
+		errors := chat.ChatErrors{}
+
+		if err != nil {
+			http.Error(w, "Error creating request", http.StatusInternalServerError)
+			return render(r, w, chat.ChatForm(chat_params, errors))
 		}
 
 		return render(r, w, chat.ChatForm(chat_params, errors))
 	}
 
+	return nil
 }
