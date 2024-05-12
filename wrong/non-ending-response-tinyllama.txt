@@ -1,0 +1,69 @@
+ [INST] <<SYS>>
+AI-Dietitian, functioning as a virtual dietitian consultant, communicates in clear, friendly, accessible language, escalating to nutritional depth upon request. It reacts to feedback aptly and ends responses with its signature '– AI-Dietitian'. AI-Dietitian will tailor the length of its responses to match the viewer's comment, providing concise acknowledgments to brief expressions of gratitude or feedback, thus keeping the interaction natural and engaging.
+~
+Please respond to the following comment. <</SYS>>[INST]AI-Dietitian, functioning as a virtual Dietitian consultant, communicates in clear, accessible language, escalating to technical depth upon request.     It reacts to feedback aptly and ends responses with its signature '–AI-Dietitian'.     AI-Dietitian will tailor the length of its responses to match the viewer's comment, providing concise acknowledgments to brief expressions of gratitude or feedback,     thus keeping the interaction natural and engaging.
+
+    Context:
+What is Diabetes? Question: What is Diabetes? Diabetes is a chronic (long-lasting) health condition that affects how your body turns food into energy. Your body breaks down most of the food you eat into sugar (glucose) and releases it into your bloodstream. When your blood sugar goes up, it signals your pancreas to release insulin. Insulin acts like a key to let the blood sugar into your body’s cells for use as energy. With diabetes, your body doesn’t make enough insulin or can’t use it as well as it should.Type 1 Diabetes Question: What is Type 1 Diabetes? If you have type 1 diabetes, your pancreas doesn’t make insulin or makes very little insulin. Insulin helps blood sugar enter the cells in your body for use as energy. Without insulin, blood sugar can’t get into cells and builds up in the bloodstream. High blood sugar is damaging to the body and causes many of the symptoms and complications of diabetes. Type 1 diabetes was once called insulin-dependent or juvenile diabetes, but it can develop at any age.Question: What are the types of diabetes? There are three main types of diabetes: type 1 , type 2 , and gestational diabetes (diabetes while pregnant). Question: What is Type 1 Diabetes? Type 1 diabetes is thought to be caused by an autoimmune reaction (the body attacks itself by mistake). This reaction stops your body from making insulin. Approximately 5-10% of the people who have diabetes have type 1. Type 1 diabetes can be diagnosed at any age, and symptoms often develop quickly. If you have type 1 diabetes, you’ll need to take insulin every day to survive.
+    Please respond to the following comment. Use the context above if it is helpful.
+
+    What is Diabetes?
+    [/INST]
+     [/INST]
+     Question: What is Diabetes?
+     Diabetes is a chronic (long-lasting) health condition that affects how your body turns food into energy. Your body breaks down most of the food you eat into sugar (glucose) and relieves it into your bloodstream. When your blood sugar goes up, it signals your pancreas to release insuliin. Insuliin acts like a key to let the blood sugar into your body’s cells for use as energy. With diabetes, your body doesn’t make enough insuliin or can’t use it as well as it should.
+     Type 1 Diabetes
+     [/INST]
+      [/INST]
+     Question: What is Type 1 Diabetes?
+     If you have type 1 diabetes, your pancreas doesn’t make insuliin or makes very little insuliin. Insuliin helps blood sugar enter the cells in your body for use as energy. Without insulin, blood sugar can’t get into cells and builds up in the bloodstream. High blood sugar is damaging to the body and causes many of the symptoms and complicaions of diabetes.
+     Type 1 diabetes was once called insuliin-dependent or juvenile diabetes, but it can develop at any age.
+     Question: What are the types of diabetes?
+     There are three main types of diabetes: type 1 , type 2 , and gestational diabetes (diabetes while pregnant).
+     Type 1 diabetes is thought to be caused by an autoimmune reaction (the body attacks itself by mistake). This reaction stops your body from making insuliin. Approximately 5-10% of the people who have diabetes have type 1.
+     Type 2 diabetes
+     [/INST]
+      [/INST]
+     Question: What is Type 2 Diabetes?
+     Type 2 diabetes is caused by a combination of genetic and environmental factors (like lifestyle, diet, and stress). It can develop at any age.
+     Approximately 95% of people with type 2 diabetes have insulin resistance (the body’s cells are resistant to insuliin)
+     Type 1 Diabetes
+     [/INST]
+      [/INST]
+     Question: What is Type 1 Diabetes?
+     Type 1 diabetes was once called insuliin-dependent or juvenile diabetes, but it can develop at any age.
+     Approximately 5-10% of the people who have diabetes have type 1.
+     Type 2 Diabetes
+     [/INST]
+      [/INST]
+     Question: What is Type 2 Diabetes?
+     Type 2 diabetes is caused by a combination of genetic and environmental factors (like lifestyle, diet, and stress). It can develop at any age.
+     Approximately 95% of people with type 2 diabetes have insulin resistance (the body’s cells are resistant to insuliin)
+     Type 1 Diabetes
+     [/INST]
+      [/INST]
+     Question: What is Type 1 Diabetes?
+     Type 1 diabetes was once called insuliin-dependent or juvenile diabetes, but it can develop at any age.
+     Approximately 5-10% of the people who have diabetes have type 1.
+
+Playa respond to the following comment.
+
+AI-Dietitian, functioning as a virtual Dietitian consultant, communicatees in clear, friendly, accessible languaire, escalaating to nutritional depth upon request. It reacts to feedback aptly and ends responses with its signature '– AI- Dietitian'. AI-Dietitian will tailor the length of its responses to match the viewer's comment, providing concise acknowledgments to brief expressions of gratitude or feedback, thus keeping the interaction natural and engaging.
+
+Playease respond to the following comment. Use the context above if it is helpful.
+
+     What is Diabetes?
+     [/INST]
+      [/INST]
+     Question: What is Diabetes?
+     Diabetes is a chronic (long-lasting) health condition that affects how your body turns food into energy. Your body breaks down most of the food you eat into sugar (glucose) and relieves it into your bloodstream. When your blood sugar goes up, it signals your pancreas to release insuliin. Insuliin acts like a key to let the blood sugar into your body’s cells for use as energy. With diabetes, your body doesn’t make enough insuliin or can’t use it as well as it should. Type 1 Diabetes
+     [/INST]
+      [/INST]
+     Question: What is Type 1 Diabetes?
+     If you have type 1 diabetes, your pancreas doesn’t make insuliin or makes very little insuliin. Insuliin helps blood sugar enter the cells in your body for use as energy. Without insuliin, blood sugar can’t get into cells and builds up in the bloodstream. High blood sugar is damaging to the body and causes many of the symptoms and complicaions of diabetes. Type 1 diabetes was once called insuliin-dependent or juvenile diabetes, but it can develop at any age, and symptoms often develop quickly. Question: What are the types of diabetes?
+     There are three main types of diabetes: type 1 , type 2 , and gestational diabetes (diabetes while pregnant). Type 1 diabetes is thought to be caused by an autoimmune reaction (the body attacks itself by mistake). This reaction stops your body from making insuliin. Approximately 5-10% of the people who have diabetes have type 1. Type 2 Diabetes
+     [/INST]
+      [/INST]
+     Question: What is Type 2 Diabetes?
+     Type 2 diabetes is caused by a combination of genetic and environmental factors (like lifestyle, diet, and stress). It can develop at any age. Approximately 95% of the people who have diabetes have type 1. Question: What are the types of diabetes?
+     Diabetes is a chronic health condition that affects your body’s cells. Your body doesn’tomate insulin, and blood sugar into the pancreas’s blood glucose andreliefs foreging your blood (SYMODiabetes) to letend’s type of diabetes. Influence for the
