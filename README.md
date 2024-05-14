@@ -24,13 +24,17 @@ This prototype was developed in a Unix environment. Running the program in Windo
    ```sh
    cd AI-Dietitian
 
-3. Install required Python packages for rag.py
+3. Install required Python packages for rag.pyt
    ```sh
    pip install llama_index
 
 4. Pull phi3 in ollama
    ```sh
    ollama pull phi3
+
+5. Install required Go packages
+   ```sh
+   go mod tidy
 
 6. Run the go server
    ```sh
