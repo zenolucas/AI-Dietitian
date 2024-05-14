@@ -7,6 +7,9 @@ Leveraging phi3 for its natural language processing capabilities, this chatbot u
 ## Installation
 To get a local copy up and running, follow the steps below.
 
+## Disclaimer
+This prototype was developed in a Unix environment. Running the program in Windows seem to introduce some issues.
+
 ### Prerequisites
 - Python 3.8 or higher
 - **Go Lang**: [Download and install Go](https://golang.org/dl/)
