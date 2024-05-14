@@ -1,21 +1,11 @@
 # My Virtual AI-Dietitian
 
-## Table of Contents
-- [About](#about)
-- [Features](#features)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
-- [Contact](#contact)
-
 ## About
 This project is a chatbot designed to provide accurate and helpful information about diabetes. 
 Leveraging phi3 for its natural language processing capabilities, this chatbot uses Retrieval-Augmented Generation (RAG) to deliver precise and contextual responses by accessing diabetes-related documents.
 
-
 ## Installation
-To get a local copy up and running, follow these simple steps.
+To get a local copy up and running, follow the steps below.
 
 ### Prerequisites
 - Python 3.8 or higher
