@@ -1,21 +1,14 @@
 # My Virtual AI-Dietitian
 
-## Table of Contents
-- [About](#about)
-- [Features](#features)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
-- [Contact](#contact)
-
 ## About
 This project is a chatbot designed to provide accurate and helpful information about diabetes. 
 Leveraging phi3 for its natural language processing capabilities, this chatbot uses Retrieval-Augmented Generation (RAG) to deliver precise and contextual responses by accessing diabetes-related documents.
 
-
 ## Installation
-To get a local copy up and running, follow these simple steps.
+To get a local copy up and running, follow the steps below.
+
+## Disclaimer
+This prototype was developed in a Unix environment. Running the program in Windows seem to introduce some issues.
 
 ### Prerequisites
 - Python 3.8 or higher
@@ -31,13 +24,17 @@ To get a local copy up and running, follow these simple steps.
    ```sh
    cd AI-Dietitian
 
-3. Install required Python packages for rag.py
+3. Install required Python packages for rag.pyt
    ```sh
    pip install llama_index
 
 4. Pull phi3 in ollama
    ```sh
    ollama pull phi3
+
+5. Install required Go packages
+   ```sh
+   go mod tidy
 
 6. Run the go server
    ```sh
