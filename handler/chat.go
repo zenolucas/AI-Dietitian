@@ -18,12 +18,12 @@ func HandleChatIndex(w http.ResponseWriter, r *http.Request) error {
 func HandleChatCreate(w http.ResponseWriter, r *http.Request) error {
 	prompt := r.FormValue("prompt")
 
-	if (strings.Contains(prompt, "recommend") && strings.Contains(prompt, "meal")) {
+	if strings.Contains(prompt, "recommend") && strings.Contains(prompt, "meal") {
 		// then let's assume it's a recommendation task lol
 
-		print("recommend a meal using RAG as well, lols.")
+		print("recommend a meal using RAG.")
 
-	} else if (strings.Contains(prompt, "What is") || strings.Contains(prompt, "what is") || strings.Contains(prompt, "?")) {
+	} else if strings.Contains(prompt, "What is") || strings.Contains(prompt, "what is") || strings.Contains(prompt, "?") {
 		// else if this is a QandA task, do RAG first then feed raggedPrompt into model
 
 		cmd := exec.Command("python", "rag.py", prompt)
@@ -42,7 +42,6 @@ func HandleChatCreate(w http.ResponseWriter, r *http.Request) error {
 		// some preprocessing, removal of irrelevant CMD output from running rag.py
 		raggedPrompt = strings.ReplaceAll(raggedPrompt, "LLM is explicitly disabled. Using MockLLM.", "")
 		print(raggedPrompt)
-		
 
 		// Replace newline characters with spaces so that raggedPrompt is 1 single line.
 		raggedPrompt = strings.ReplaceAll(raggedPrompt, "\n", " ")
@@ -100,6 +99,7 @@ func HandleChatCreate(w http.ResponseWriter, r *http.Request) error {
 	} else {
 		// else chat with LLM
 
+		print(prompt)
 		// to send a request to ollama hosted locally
 		url := "http://localhost:11434/api/generate"
 		headers := `{"Content-Type": "application/json"}`
@@ -130,7 +130,6 @@ func HandleChatCreate(w http.ResponseWriter, r *http.Request) error {
 
 		type OllamaResponse struct {
 			Response string `json:"response"`
-			// Add more fields if needed
 		}
 
 		var ollamaResp OllamaResponse
