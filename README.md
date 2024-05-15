@@ -24,7 +24,7 @@ This prototype was developed in a Unix environment. Running the program in Windo
    ```sh
    cd AI-Dietitian
 
-3. Install required Python packages for rag.pyt
+3. Install required Python packages for rag_QA.py
    ```sh
    pip install llama_index
    pip install llama_index.embeddings.huggingface
