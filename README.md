@@ -27,6 +27,7 @@ This prototype was developed in a Unix environment. Running the program in Windo
 3. Install required Python packages for rag.pyt
    ```sh
    pip install llama_index
+   pip install llama_index.embeddings.huggingface
 
 4. Pull phi3 in ollama
    ```sh
