@@ -1,0 +1,4 @@
+<div class=\"flex w-full h-[calc(100vh-65px)]\"><div class=\"w-full bg-base-300 flex flex-col justify-end overflow-scroll\"><div class=\"text-center\"><p class=\"text-2xl font-bold mb-6\">What can I do for you today?</p><br><br><br>
+<br><br><p>My Virtual AI-Dietitian can make mistakes. Consider checking important information. </p></div></div></div>
+<p class=\"text-xl font-bold mb-4\">
+</p><br><br><br><br><br><form hx-post=\"/question\" hx-swap=\"outerHTML\"><input type=\"text\" name=\"prompt\" placeholder=\"Message My Virtual AI-Dietitian\" class=\"input input-bordered w-full max-w-md mt-4\"> <button type=\"submit\" class=\"btn btn-primary\">send <i class=\"fa-solid fa-arrow-up\"></i></button></form>

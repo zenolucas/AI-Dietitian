@@ -7,10 +7,7 @@ import (
 templ Index() {
 	@layout.App(true) {
 		<div class="flex w-full h-[calc(100vh-65px)]">
-			<div class="w-1/4 border-r border-gray-700 flex justify-center">
-				<button class="btn btn-wide mt-4">New Chat</button>
-			</div>
-			<div class="w-3/4 bg-base-300 flex flex-col justify-end overflow-scroll">
+			<div class="w-full bg-base-300 flex flex-col justify-end overflow-scroll">
 				<div class="text-center">
 					<p class="text-2xl font-bold mb-6">What can I do for you today?</p>
 					<br/>
@@ -27,24 +24,57 @@ templ Index() {
 }
 
 type ChatParams struct {
-	Prompt   string
-	MealName string
-	FileName string
-	Answer	 string
+	Prompt      string
+	MealName    string
+	FileName    string
+	Ingredients []string
+	Procedure   []string
+	Answer      string
 }
 type ChatErrors struct {
 	Error string
 }
 
 templ ChatForm(params ChatParams, errors ChatErrors) {
-	<p class="text-xl font-bold mb-4"> { params.MealName } </p>
-	<img src={ params.FileName } alt=" " width="300" height="200"/> 
-	<p class="text-xl font-bold mb-4"> { params.Answer } </p>
-	<br/>
-	<br/>
-	<br/>
-	<br/>
-	<br/>
+	<div class="flex h-screen">
+		<!-- Meal Image -->
+		<div class="w-1/3 bg-base-300 flex justify-center items-center pt-44">
+		<h2 class="font-bold text-xl mb-4"> { params.MealName }</h2>
+			<img src={ params.FileName } alt="" class="max-w-full h-auto rounded"/>
+		</div>
+		<!-- Ingredients List -->
+		<div class="w-1/3 bg-base-300 p-4 pt-52">
+			<h2 class="font-bold text-xl mb-4">Ingredients</h2>
+			<ul>
+				for _, ingredient := range params.Ingredients {
+					<li class="text-base mb-2">{ ingredient }</li>
+				}
+			</ul>
+		</div>
+		<!-- Procedures -->
+		<div class="w-1/3 bg-base-300 p-4 pt-52">
+			<h2 class="font-bold text-xl mb-4">Procedures</h2>
+			<ul>
+				for _, procedure := range params.Procedure {
+					<li class="text-base mb-2">{ procedure }</li>
+				}
+			</ul>
+		</div>
+	</div>
+	// <p class="text-xl font-bold mb-4">{ params.MealName } </p>
+	// <img src={ params.FileName } alt=" " width="300" height="200"/>
+	// <ul>
+	// 	for _, ingredient := range params.Ingredients {
+	// 		<li class="text-xl mb-2">{ ingredient }</li>
+	// 	}
+	// </ul>
+	// <ul>
+	// 	for _, procedure := range params.Procedure {
+	// 		<li class="text-xl mb-2">{ procedure }</li>
+	// 	}
+	// </ul>
+	//<p class="text-xl font-bold mb-4"> { params.Answer } </p>
+
 	<form hx-post="/chat" hx-swap="outerHTML">
 		<input type="text" name="prompt" placeholder="Message My Virtual AI-Dietitian" class="input input-bordered w-full max-w-md mt-4"/>
 		<button type="submit" class="btn btn-primary">send <i class="fa-solid fa-arrow-up"></i></button>

@@ -24,11 +24,13 @@ func main() {
 	router.Use(handler.WithUser)
 
 	// to handle static files
-	router.Handle("/*", http.StripPrefix("/", http.FileServer(http.FS(FS))))	
+	router.Handle("/*", http.StripPrefix("/", http.FileServer(http.FS(FS))))
 
 	router.Get("/", handler.MakeHandler(handler.HandleHomeIndex))
 	router.Get("/chat", handler.MakeHandler(handler.HandleChatIndex))
 	router.Post("/chat", handler.MakeHandler(handler.HandleChatCreate))
+	router.Get("/question", handler.MakeHandler(handler.HandleQuestionIndex))
+	router.Post("/question", handler.MakeHandler(handler.HandleQuestionCreate))
 
 	port := os.Getenv("HTTP_LISTEN_ADDRESS")
 	slog.Info("Application is running on", "port", port)
@@ -38,5 +40,3 @@ func main() {
 func initEverything() error {
 	return godotenv.Load()
 }
-
-

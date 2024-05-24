@@ -1,0 +1,11 @@
+<div class=\"flex w-full h-[calc(100vh-65px)]\"><div class=\"w-full bg-base-300 flex flex-col justify-end overflow-scroll\"><div class=\"text-center\"><p class=\"text-2xl font-bold mb-6\">What can I do for you today?</p><br><br><br>
+<br><br><p>My Virtual AI-Dietitian can make mistakes. Consider checking important information. </p></div></div></div>
+<div class=\"flex h-screen\"><!-- Meal Image --><div class=\"w-1/3 bg-base-300 flex justify-center items-center pt-44\"><h2 class=\"font-bold text-xl mb-4\">
+</h2><img src=\"
+\" alt=\"\" class=\"max-w-full h-auto rounded\"></div><!-- Ingredients List --><div class=\"w-1/3 bg-base-300 p-4 pt-52\"><h2 class=\"font-bold text-xl mb-4\">Ingredients</h2><ul>
+<li class=\"text-base mb-2\">
+</li>
+</ul></div><!-- Procedures --><div class=\"w-1/3 bg-base-300 p-4 pt-52\"><h2 class=\"font-bold text-xl mb-4\">Procedures</h2><ul>
+<li class=\"text-base mb-2\">
+</li>
+</ul></div></div><form hx-post=\"/chat\" hx-swap=\"outerHTML\"><input type=\"text\" name=\"prompt\" placeholder=\"Message My Virtual AI-Dietitian\" class=\"input input-bordered w-full max-w-md mt-4\"> <button type=\"submit\" class=\"btn btn-primary\">send <i class=\"fa-solid fa-arrow-up\"></i></button></form>
