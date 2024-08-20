@@ -79,7 +79,7 @@ func HandleChatCreate(w http.ResponseWriter, r *http.Request) error {
 
 		if response.StatusCode != http.StatusOK {
 			fmt.Println("ERROR code: ", response.StatusCode)
-			return nil // Or return an error if you want to handle it differently
+			return nil
 		}
 
 		// Read the response body
@@ -90,7 +90,6 @@ func HandleChatCreate(w http.ResponseWriter, r *http.Request) error {
 
 		type OllamaResponse struct {
 			Response string `json:"response"`
-			// Add more fields if needed
 		}
 
 		var ollamaResp OllamaResponse
@@ -180,7 +179,7 @@ func HandleChatCreate(w http.ResponseWriter, r *http.Request) error {
 
 		if response.StatusCode != http.StatusOK {
 			fmt.Println("ERROR code: ", response.StatusCode)
-			return nil // Or return an error if you want to handle it differently
+			return nil
 		}
 
 		// Read the response body
@@ -191,7 +190,6 @@ func HandleChatCreate(w http.ResponseWriter, r *http.Request) error {
 
 		type OllamaResponse struct {
 			Response string `json:"response"`
-			// Add more fields if needed
 		}
 
 		var ollamaResp OllamaResponse
@@ -234,7 +232,7 @@ func HandleChatCreate(w http.ResponseWriter, r *http.Request) error {
 
 		if response.StatusCode != http.StatusOK {
 			fmt.Println("ERROR code: ", response.StatusCode)
-			return nil // Or return an error if you want to handle it differently
+			return nil
 		}
 
 		// Read the response body
@@ -283,7 +281,7 @@ func readPdf(path string) (string, error) {
 		return "error happened", err
 	}
 
-	b, err := os.ReadFile("recipe.txt") // just pass the file name
+	b, err := os.ReadFile("recipe.txt") 
 	if err != nil {
 		fmt.Print(err)
 	}

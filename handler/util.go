@@ -32,4 +32,3 @@ func MakeHandler(h func(http.ResponseWriter, *http.Request) error) http.HandlerF
 	}
 }
 
-// we can return an error view, let's do that soon.
