@@ -33,7 +33,7 @@ func Index() templ.Component {
 				templ_7745c5c3_Buffer = templ.GetBuffer()
 				defer templ.ReleaseBuffer(templ_7745c5c3_Buffer)
 			}
-			templ_7745c5c3_Err = templ.WriteWatchModeString(templ_7745c5c3_Buffer, 1)
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"w-full max-w-screen-xl mx-auto text-center py-12\"><h1 class=\"text-5xl font-black leading-[1.2] mb-2\">Chat with your friendly AI-Dietitian :)</h1><h2 class=\"text-xl font-semibold mb-6\">Powered using fine-tuned LLMs!</h2><a href=\"/chat\" class=\"btn btn-primary mb-10\">Chat now<i class=\"fa-solid fa-arrow-right\"></i></a></div>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

@@ -21,7 +21,7 @@ func HandleChatCreate(w http.ResponseWriter, r *http.Request) error {
 	prompt := r.FormValue("prompt")
 
 	if strings.Contains(prompt, "recommend") && strings.Contains(prompt, "meal") {
-		// we assume it's a recommendation task
+		
 
 		print("this is executed")
 
@@ -44,9 +44,6 @@ func HandleChatCreate(w http.ResponseWriter, r *http.Request) error {
 		raggedPrompt := cmdSplit[1]
 		print(raggedPrompt)
 
-		// Replace newline characters with spaces so that raggedPrompt is 1 single line.
-		// raggedPrompt = strings.ReplaceAll(raggedPrompt, "\n", " ")
-
 		// Define a struct for your payload
 		type Payload struct {
 			Model  string `json:"model"`
@@ -64,11 +61,6 @@ func HandleChatCreate(w http.ResponseWriter, r *http.Request) error {
 		// // to send a request to ollama hosted locally
 		url := "http://localhost:11434/api/generate"
 		headers := `{"Content-Type": "application/json"}`
-		// payload := []byte(`{
-		// 				"model": "phi3",
-		// 				"prompt": "` + raggedPrompt + `",
-		// 				"stream": false
-		// 				}`)
 
 		// Marshal the payload to JSON
 		payloadBytes, err := json.Marshal(data)
@@ -106,12 +98,6 @@ func HandleChatCreate(w http.ResponseWriter, r *http.Request) error {
 			return err
 		}
 
-		// amen! so far so good. next is.
-
-		// ollama Response is a filepath to our recipe.pdf
-		// e.g. /home/zenolucas/Projects/webDev/AI-Dietitian/Documents/MealRec/Fruited Chicken Salad.pdf
-
-		// so given this
 		recipeFilePath := ollamaResp.Response
 
 		recipe, err := readPdf(recipeFilePath) // Read local pdf file
@@ -151,29 +137,6 @@ func HandleChatCreate(w http.ResponseWriter, r *http.Request) error {
 		}
 
 		return render(r, w, chat.ChatForm(chat_params, errors))
-
-		// var meal types.Meal
-		// // unmarshaling JSON
-		// errs := json.Unmarshal([]byte(raggedPrompt), &meal)
-		// if errs != nil {
-		// 	fmt.Println(errs)
-		// }
-
-		// // Print extracted information
-		// // fmt.Println("Meal Name:", meal.MealName)
-		// // fmt.Println("Image File Path:", meal.ImageFilePath)
-		// // fmt.Println("Ingredients:", meal.Ingredients)
-		// // fmt.Println("Procedure:", meal.Directions)
-		// // fmt.Println("Friendly Comments:", meal.FriendlyComments)
-
-		// rec_params := chat.ChatParams{
-		// 	Prompt:   r.FormValue("prompt"),
-		// 	FileName: meal.ImageFilePath,
-		// }
-
-		// return render(r, w, chat.ChatForm(rec_params, chat.ChatErrors{}))
-
-		// print("recommend a meal using RAG.")
 
 	} else if strings.Contains(prompt, "What is") || strings.Contains(prompt, "what is") || strings.Contains(prompt, "?") {
 		// else if this is a QandA task, do RAG first then feed raggedPrompt into model
