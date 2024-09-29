@@ -1,7 +1,7 @@
 # My Virtual AI-Dietitian
 
 ## About
-This project involves a chatbot powered by Phi3 and Retrieval-Augmented Generation (RAG) to provide contextual responses based on diabetes-related documents. Users can also request meal recommendations, and the chatbot will respond with a suggestion, including an image, recipe, and step-by-step preparation instructions.
+My Virtual AI-Dietitian is a chatbot powered by Phi3 and Retrieval-Augmented Generation (RAG) to provide contextual responses based on diabetes-related documents. Users can also ask for meal recommendations, and the chatbot will respond with a suggestion, including an image, recipe, and step-by-step preparation instructions.
 
 ![Screenshot from 2024-09-29 14-20-32](https://github.com/user-attachments/assets/f4cb5eda-3f10-43c8-a815-8012cda3d2e0)
 
@@ -11,7 +11,7 @@ This project involves a chatbot powered by Phi3 and Retrieval-Augmented Generati
 To get a local copy up and running, follow the steps below.
 
 ## Disclaimer
-This prototype was developed in a Unix environment. Running the program in Windows seem to introduce some issues.
+This prototype was developed in a Unix environment. Running the program in Windows may introduce some issues.
 
 ### Prerequisites
 - Python 3.8 or higher
